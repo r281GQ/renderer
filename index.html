@@ -14,8 +14,8 @@
      <button id="btn">change text</button>
      <script type="text/javascript">
        document.getElementById('btn').addEventListener('click', function(event){
-         Renderer.setProps(8, 'new text');
-         Renderer.attach(8,{_id:12, htmlType:'footer', props:'hi' ,children: []});
+         Renderer.setState(8, 'new text');
+         Renderer.attach(8,{_id:12, htmlType:'footer', state:'hi' ,children: []});
        })
      </script>
   </body>

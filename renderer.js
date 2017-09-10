@@ -1,11 +1,11 @@
 (function() {
   var Renderer = {
-    vDOM: { _id: 'root', htmlType: 'div', props: null, children: [] },
+    vDOM: { _id: 'root', htmlType: 'div', state: null, children: [] },
     previousVDOM: {},
 
     //create vDOM elelement
-    createElement: function(_id, htmlType, props, children) {
-      return { _id: _id, htmlType: htmlType, props: props, children: children };
+    createElement: function(_id, htmlType, state, children) {
+      return { _id: _id, htmlType: htmlType, state: state, children: children };
     },
 
     //search through the vDOM
@@ -30,9 +30,9 @@
 
     //set the properties of the vDOM, need a lot improvement thogh
     //since it accesss the dom directyl whichs scope should be minimal
-    setProps: function(_id, newProps) {
+    setState: function(_id, newstate) {
       var element = this.search(_id);
-      element.props = newProps;
+      element.state = newstate;
       var domElement = document.getElementById(_id.toString());
       var father = domElement.parentNode;
       domElement.remove();
@@ -60,7 +60,7 @@
     recursive: function(father, element) {
       var domElement = document.createElement(element.htmlType);
       domElement.id = element._id;
-      if (element.props) domElement.innerHTML = element.props;
+      if (element.state) domElement.innerHTML = element.state;
       father.append(domElement);
       if (element.children.length === 0) {
         return;
