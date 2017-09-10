@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="renderer.js">
+    </script>
+    <script src="app.js" defer="defer">
+    </script>
+  </head>
+  <body>
+    <div id="root">
+    </div>
+     <button id="btn">change text</button>
+     <script type="text/javascript">
+       document.getElementById('btn').addEventListener('click', function(event){
+         Renderer.setProps(8, 'new text');
+         Renderer.attach(8,{_id:12, htmlType:'footer', props:'hi' ,children: []});
+       })
+     </script>
+  </body>
+</html>
